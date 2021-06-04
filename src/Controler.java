@@ -87,7 +87,6 @@ public class Controler implements Initializable {
         cbAnos.setItems(anos);
         cbAnos.setOnAction(evt -> {
             LocalDate data = LocalDate.of(cbAnos.getValue().getValue(),cbMeses.getValue(),1);
-            System.out.println(data);
             preencheCalendario(data);
         });
         cbAnos.getSelectionModel().select(Year.of(ano));
@@ -119,7 +118,6 @@ public class Controler implements Initializable {
 
         cbMeses.setOnAction(evt -> {
             LocalDate data = LocalDate.of(cbAnos.getValue().getValue(),cbMeses.getValue(),1);
-            System.out.println(data);
             preencheCalendario(data);
         });
         cbMeses.getSelectionModel().select(mes);
@@ -189,9 +187,12 @@ public class Controler implements Initializable {
                 diaSelecionado.seleciona();
 
                 ajustaLabelData(diaSelecionado.getData());
-                //List<EventoIntf> lista = this.getEventos.call(diaSelecionado.getData());
-                //eventos.clear();
-                //eventos.addAll(lista);
+                if(this.getEventos != null){
+                    List<EventoIntf> lista = this.getEventos.call(diaSelecionado.getData());
+                    eventos.clear();
+                    eventos.addAll(lista);
+                }
+
             }
         }
 

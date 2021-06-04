@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
 
 import static javafx.application.Application.launch;
 
@@ -22,12 +22,16 @@ public class Main extends Application {
 
         ArrayList<EventoIntf> lista = new ArrayList();
 
-        lista.add(new Evento(LocalDateTime.now().minusDays(5),"Evento 1"));
-        lista.add(new Evento(LocalDateTime.now().minusDays(4),"Evento 2"));
-        lista.add(new Evento(LocalDateTime.now().minusDays(3),"Evento 3"));
-        lista.add(new Evento(LocalDateTime.now().minusDays(2),"Evento 4"));
-        lista.add(new Evento(LocalDateTime.now().minusDays(1),"Evento 5"));
-        lista.add(new Evento(LocalDateTime.now(),"Evento 6"));
+        LocalDateTime dataHora = LocalDateTime.from(data.atTime(LocalTime.of(8,0)));
+
+        Random rnd = new Random();
+
+        for(int i=0;i<10;i++){
+            lista.add(new Evento(dataHora.plusMinutes(rnd.nextInt(300)),"Evento "+i));
+        }
+
+        Collections.sort(lista, Comparator.comparing(EventoIntf::getHora));
+
 
         return lista;
     }
