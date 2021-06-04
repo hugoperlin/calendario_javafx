@@ -1,0 +1,26 @@
+.hoje {
+    -fx-background-color : #77f2b7;
+}
+
+.fimSemana {
+    -fx-background-color : #868484;
+}
+
+.dia {
+    -fx-border-width: 1;
+    -fx-border-color: #dce0df;
+}
+
+.diaSemana {
+    -fx-font-weight: bold;
+    -fx-background-color: #c5c9c8;
+}
+
+.selecionado {
+    -fx-border-width: 2;
+    -fx-border-color: red;
+}
+
+.text {
+    -fx-background-color : gray;
+}
